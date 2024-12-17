@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZVECV_PURCHASE_ORDER_QUERY_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="QueryRaised" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="PO Approver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PoType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PO Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PO_NO" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryID" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="VECV Purchase Order Query ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryTo" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="VECV Purchase Order Query To" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryToID" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="PO Approver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="VECV PO Query Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryTime" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="VECV Purchase Order Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryStatusText" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="VECV Purchase Order Query Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Query" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PO Query" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AnswerQuery" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="QueryID"/>
+                </Key>
+                <Property Name="QueryID" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="VECV Purchase Order Query ID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryFromID" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="PO Approver" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryToID" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="PO Approver" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="VECV PO Query Date" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryTime" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="VECV Purchase Order Time" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Query" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PO Query" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PO_NO" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="QueryRaisedDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="QueryID"/>
+                </Key>
+                <Property Name="QueryID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryAsked" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryAskedDate" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryAskedTime" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryAnswered" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryAnsweredDate" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryAnsweredTime" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CheckQueryOTP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PO_NO"/>
+                    <PropertyRef Name="QUERY_ID"/>
+                    <PropertyRef Name="QUERY_FROM_ID"/>
+                    <PropertyRef Name="QUERY_TO_ID"/>
+                    <PropertyRef Name="QUERY_OTP"/>
+                </Key>
+                <Property Name="PO_NO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QUERY_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QUERY_FROM_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QUERY_TO_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QUERY_OTP" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="QueryToAnswer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="PO Approver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PoType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PO Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PO_NO" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryID" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="VECV Purchase Order Query ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryFrom" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="VECV Purchase Order Query From" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryFromID" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="PO Approver" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryDate" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="VECV PO Query Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryTime" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="VECV Purchase Order Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QueryStatusText" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="VECV Purchase Order Query Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Query" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PO Query" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZVECV_PURCHASE_ORDER_QUERY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="QueryRaisedSet" EntityType="ZVECV_PURCHASE_ORDER_QUERY_SRV.QueryRaised" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AnswerQuerySet" EntityType="ZVECV_PURCHASE_ORDER_QUERY_SRV.AnswerQuery" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="QueryRaisedDetailsSet" EntityType="ZVECV_PURCHASE_ORDER_QUERY_SRV.QueryRaisedDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CheckQueryOTPSet" EntityType="ZVECV_PURCHASE_ORDER_QUERY_SRV.CheckQueryOTP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="QueryToAnswerSet" EntityType="ZVECV_PURCHASE_ORDER_QUERY_SRV.QueryToAnswer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://vedevs4pas.vecvnet.com:8000/sap/opu/odata/sap/ZVECV_PURCHASE_ORDER_QUERY_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vedevs4pas.vecvnet.com:8000/sap/opu/odata/sap/ZVECV_PURCHASE_ORDER_QUERY_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
