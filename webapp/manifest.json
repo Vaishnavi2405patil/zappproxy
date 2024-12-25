@@ -87,21 +87,55 @@
         "clearControlAggregation": false
       },
       "routes": [
+       
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
+          "pattern": "",
+          "name": "FirstPage",
+          "target":["DeviationApprovalMaster"]
+        },
+        {
+          "pattern":"FirstPage1",
+          "name":"FirstPage1",
+          "target":["DeviationApprovalMaster"]
+        },
+        {
+          "name":"DeviationApprovalDetail",
+          "pattern":"DeviationApprovalDetail/{PO_No}/DeviationApprovalDetailSid/{Sid}/ProxyDetail/{ProxyUser}/{Type}",
+          "target":["DeviationApprovalMaster",
+						"DeviationApprovalDetail"]
+        },
+        {
+          "name":"DeviationApprovalMaster",
+          "pattern":"DeviationApprovalMaster",
+          "target":["DeviationApprovalMaster","DeviationApprovalDetail"]
+        },
+         {
+          "name": "RouteSApp",
+          "pattern": "RouteSApp",
           "target": [
-            "TargetView1"
+            "TargetSApp"
           ]
         }
       ],
       "targets": {
-        "TargetView1": {
+        
+       "DeviationApprovalMaster": 
+        {
+            "viewName":"DeviationApprovalMaster",
+            "controlAggregation":"masterPages"
+              
+          }
+        ,
+        "DeviationApprovalDetail":{
+               "viewName":"DeviationApprovalDetail",
+               "controlAggregation":"detailPages"
+        },
+        "TargetSApp": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "DeviationApprovalMaster",
-          "viewName": "DeviationApprovalMaster"
+          "viewId": "app",
+          "viewName": "SApp"
         }
       }
     },

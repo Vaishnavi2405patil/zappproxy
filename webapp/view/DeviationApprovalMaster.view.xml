@@ -1,11 +1,95 @@
-<mvc:View controllerName="zappproxy.controller.DeviationApprovalMaster"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+<mvc:View
+    controllerName="zappproxy.controller.DeviationApprovalMaster"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+>
     <App>
-    <pages>
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
-    </pages>
+        <pages>
+            <Page
+                id="page"
+                title="My Purchase Orders"
+            >
+                <subHeader>
+                    <Toolbar>
+                        <SearchField
+                            id="idSearchSo"
+                            placeholder="Search by PO Number"
+                            search="onSearch"
+                        />
+                        <Button
+                            id="btnAdd"
+                            icon="sap-icon://add"
+                            tooltip="{i18n>refreshButtonToolti}"
+                            press="handleOpenDialog"
+                        />
+                    </Toolbar>
+                </subHeader>
+                <content>
+                    <Text
+                        id="txtPUserID"
+                        visible="false"
+                    />
+                    <Label
+                        id="lblUser_dept"
+                        visible="false"
+                    />
+                    <Text
+                        id="txtTemPO"
+                        visible="false"
+                    />
+                    <Text
+                        id="txtTemPOSelctionChange"
+                        visible="false"
+                    />
+                    <List items="{path:'/results'}" noDataText="No PO for Approval" id="listPO" mode="SingleSelectMaster" selectionChange="onSelectionChange"
+						updateFinished="attachUpdateFinished">
+                        <items>
+                        <ObjectListItem
+                            title="{PO_No}"
+                            type="Active"
+                            press="onListItemPress"
+                            number="{PO_Amount}"
+                            numberUnit="{PO_Currency}"
+                        >
+                            <firstStatus class="clsProxyStatus">
+                                <ObjectStatus
+                                    text="{PO_Status}"
+                                    state="Success"
+                                    class="clsProxyStatus"
+                                />
+                            </firstStatus>
+                            <secondStatus>
+                                <ObjectStatus
+                                    text="{Rush}"
+                                    visible="true"
+                                    state="Error"
+                                />
+                            </secondStatus>
+                            <attributes>
+                                <ObjectAttribute
+                                    text="{Document_Type}"
+                                    class="clsDocType"
+                                />
+                                <ObjectAttribute
+                                    text="{Plant}"
+                                    class="PlantAttributes"
+                                />
+                                <ObjectAttribute
+                                    text="{Vendor}"
+                                    class="clsvendor"
+                                />
+                                <ObjectAttribute
+                                    text="{PoType}"
+                                    visible="false"
+                                />
+                            </attributes>
+                        </ObjectListItem>
+                        </items>
+                    </List>
+                </content>
+            </Page>
+        </pages>
     </App>
 </mvc:View>

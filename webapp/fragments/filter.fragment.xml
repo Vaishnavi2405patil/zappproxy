@@ -1,0 +1,29 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <ViewSettingsDialog confirm="handleConfirm">
+        <filterItems>
+            <ViewSettingsFilterItem
+                multiSelect="false"
+                text="Status"
+                key="Status"
+            >
+                <items>
+                    <ViewSettingsItem
+                        text="In Approval"
+                        key="In Approval"
+                    />
+                    <ViewSettingsItem
+                        text="Approved"
+                        key="Approved"
+                    />
+                    <ViewSettingsItem
+                        text="In Query"
+                        key="In Query"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</c:FragmentDefinition>

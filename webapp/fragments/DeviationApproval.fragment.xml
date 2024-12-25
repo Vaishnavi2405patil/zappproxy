@@ -1,0 +1,81 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Dialog
+        contentWidth="700px"
+        horizontalScrolling="false"
+        title="Proxy Approval"
+    >
+        <VBox class="sapUiSmallMargin">
+            <f:Form
+                editable="true"
+                ariaLabelledBy="Title1"
+            >
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                    />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement
+                                label="Purchase Order/Change Cover Note No."
+                            >
+                                <f:fields>
+                                    <Input
+                                        type="Number"
+                                        id="idDevAppPO"
+                                        placeholder="Enter Purchase Order No"
+                                        width="80%"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="User ID">
+                                <f:fields>
+                                    <Input
+                                        id="cmbUser"
+                                        type="Text"
+                                        placeholder=""
+                                        class="ClassForMargin"
+                                        showSuggestion="true"
+                                        liveChange="OnSelectUser"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+        <buttons>
+            <Button
+                text="Go"
+                icon="sap-icon://accept"
+                type="Emphasized"
+                press="OnGo"
+            />
+            <Button
+                text="Cancel"
+                type="Reject"
+                icon="sap-icon://decline"
+                press="OnCancelDeviationApv"
+            />
+        </buttons>
+    </Dialog>
+</c:FragmentDefinition>

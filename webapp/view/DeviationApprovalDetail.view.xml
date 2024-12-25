@@ -1,10 +1,367 @@
 <mvc:View
-	controllerName="zappproxy.controller.DeviationApprovalDetail"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
-	displayBlock="true"
-	height="100%"
-	busyIndicatorDelay="0"
+    controllerName="zappproxy.controller.DeviationApprovalDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:upload="sap.m.upload"
 >
+    <App>
+        <pages>
+            <Page
+                title="Volvo Eicher Commercial Vehicles Purchase Order Approva"
+                navButtonPress="handleNavButtonPress"
+                showNavButton="{device>/system/phone}"
+            >
+                <content>
+                    <Text
+                        id="idSelection"
+                        visible="false"
+                    />
+                    <Text
+                        id="idViewForPOList"
+                        visible="false"
+                    />
+                    <ObjectHeader visible="false">
+                        <statuses>
+                            <ObjectStatus id="objPrice" />
+                        </statuses>
+                        <ObjectAttribute
+                            id="objcmp"
+                            class="objectattr"
+                        />
+                    </ObjectHeader>
+                    <IconTabBar
+                        id="idIconTabBarNoIcons"
+                        expandable="false"
+                        select="handleIconTabBarSelect"
+                        expanded="true"
+                        class="sapUiResponsiveContentPadding"
+                    >
+                        <items>
+                            <IconTabFilter
+                                icon="sap-icon://pdf-attachment"
+                                text="Cover Note"
+                                key="CoverNote"
+                            >
+                                <c:html id="idFrame" />
+                            </IconTabFilter>
+                            <IconTabFilter
+                                icon="sap-icon://pdf-attachment"
+                                text="Purch.Order/Change"
+                                key="PurchaseOrder"
+                            >
+                                <c:html id="idFramePO" />
+                            </IconTabFilter>
+                            <IconTabFilter
+                                text="Cost Details"
+                                key="Attachments"
+                                icon="sap-icon://attachment"
+                            >
+                                <UploadCollection
+                                    id="UploadCollection"
+                                    maximumFilenameLength="35"
+                                    maximumFileSize="10"
+                                    multiple="true"
+                                    showSeparators="All"
+                                    change="onChange"
+                                    fileDeleted="onFileDeleted"
+                                    filenameLengthExceed="onFilenameLengthExceed"
+                                    fileRenamed="onFileRenamed"
+                                    fileSizeExceed="onFileSizeExceed"
+                                    selectionChange="onSelectionChange"
+                                    typeMissmatch="onTypeMissmatch"
+                                    uploadComplete="onUploadComplete"
+                                    beforeUploadStarts="onBeforeUploadStarts"
+                                    items="{path:'/results'}"
+                                    uploadUrl="/sap/opu/odata/sap/ZVECV_PURCHASE_ORDER_APPROVAL_SRV/POAttachmentsSet"
+                                >
+                                    <toolbar>
+                                        <OverflowToolbar id="myId">
+                                            <Title id="attachmentTitle" />
+                                            <ToolbarSpacer />
+                                            <Button
+                                                id="deleteSelectedButton"
+                                                text="Delete"
+                                                press="onDeleteSelectedItems"
+                                                enabled="false"
+                                                visible="false"
+                                                type="Transparent"
+                                            />
+                                            <ToggleButton
+                                                id="selectAllButton"
+                                                text="Select all"
+                                                press="onSelectAllPress"
+                                                enabled="false"
+                                                visible="false"
+                                                type="Transparent"
+                                            />
+                                            <Title
+                                                text="Attachment Repository:SAP DMS"
+                                            />
+                                            <UploadCollectionToolbarPlaceholder
+                                                id="idupload"
+                                            />
+                                        </OverflowToolbar>
+                                    </toolbar>
+                                    <items>
+                                        <UploadCollectionItem
+                                            documentId="{DocumentID}"
+                                            fileName="{DocumentName}"
+                                            mimeType="{MimeType}"
+                                            thumbnailUrl=""
+                                            url="{DocumentURL}"
+                                            visibleEdit="false"
+                                            enableDelete="true"
+                                        >
+                                            <attributes>
+                                                <statuses>
+                                                    <ObjectStatus
+                                                        text="Uploaded On :{DocumentDate} {DocumentTime}"
+                                                    />
+                                                </statuses>
+                                            </attributes>
+                                        </UploadCollectionItem>
+                                    </items>
+                                </UploadCollection>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                text="Query Histor"
+                                key="QueryHistor"
+                                icon="sap-icon://history"
+                            >
+                                <Table
+                                    id="tblQueryHistory"
+                                    items="{path:'/results'}"
+                                    inset="false"
+                                    growing="true"
+                                    growingThreshold="10"
+                                    growingScrollToLoad="true"
+                                    width="auto"
+                                >
+                                    <columns>
+                                        <Column width="15%">
+                                            <Text
+                                                text="From"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                        <Column width="15%">
+                                            <Text
+                                                text="To"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                        <Column width="15%">
+                                            <Text
+                                                text="Date and Time"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                        <Column
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true"
+                                            width="15%"
+                                        >
+                                            <Text
+                                                text="Status"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                        <Column
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true"
+                                            width="15%"
+                                        >
+                                            <Text
+                                                text="Query"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem press="onEdit">
+                                            <cells>
+                                                <Text text="{ Query_From }" />
+                                                <Text text="{Query_To}" />
+                                                <Text
+                                                    text="{Query_Date} {Query_Time}"
+                                                />
+                                                <Text text="{Query_Status}" />
+                                                <Text text="{Query}" />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                text="Appr.Comments"
+                                key="Comments"
+                                icon="sap-icon://comment"
+                            >
+                                <Table
+                                    id="tblComments"
+                                    items="{path:'/results'}"
+                                    inset="false"
+                                    growing="true"
+                                    growingThreshold="10"
+                                    growingScrollToLoad="true"
+                                    width="auto"
+                                >
+                                    <columns>
+                                        <Column width="15%">
+                                            <Text
+                                                text="User"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                        <Column width="15%">
+                                            <Text text="Date and Time" />
+                                        </Column>
+                                        <Column width="15%">
+                                            <Text
+                                                text="Status"
+                                                class="tblHeader"
+                                            />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem press="onEdit">
+                                            <cells>
+                                                <Text text="{UserName}" />
+                                                <Text
+                                                    text="{POApprovalDate} {POApprovalTime}"
+                                                />
+                                                <Text text="{POStatus}" />
+                                                <Text text="{POComment}" />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                text="General"
+                                key="General"
+                                icon="sap-icon://message-information"
+                            >
+                                <l:Grid
+                                    class="sapUiSmallMarginTop"
+                                    width="auto"
+                                    position="Center"
+                                    containerQuery="true"
+                                    vSpacing="2"
+                                    defaultSpan="XL2 L4"
+                                >
+                                    <l:content>
+                                        <VBox>
+                                            <f:SimpleForm
+                                                id="SimpleFormChange354wide1"
+                                                editable="false"
+                                                layout="ResponsiveGridLayout"
+                                                labelSpanXL="4"
+                                                labelSpanL="3"
+                                                width="800px"
+                                                labelSpanM="4"
+                                                labelSpanS="12"
+                                                adjustLabelSpan="false"
+                                                emptySpanXL="0"
+                                                emptySpanL="4"
+                                                emptySpanM="0"
+                                                emptySpanS="0"
+                                                columnsXL="2"
+                                                columnsL="2"
+                                                columnsM="2"
+                                                singleContainerFullSize="false"
+                                            >
+                                                <f:content>
+                                                    <Text
+                                                        id="txtPONO"
+                                                        visible="false"
+                                                    />
+                                                    <Label
+                                                        text="PO No/ Chg no"
+                                                        id="lblPUrOrNo"
+                                                    />
+                                                    <Text id="PurOrdNo" />
+                                                    <Label
+                                                        text="PO Description"
+                                                    />
+                                                    <Text id="PurOrdDesc" />
+                                                    <Label
+                                                        text="PO/AMND Initiator"
+                                                    />
+                                                    <Text id="PurOrdInt" />
+                                                    <Label text="Vendor Name" />
+                                                    <Text id="PurOrdVendor" />
+                                                    <Label text="CN Date" />
+                                                    <Text id="idCnDate" />
+                                                </f:content>
+                                            </f:SimpleForm>
+                                            <layoutData>
+                                                <l:GridData
+                                                    span="XL2 L4"
+                                                    linebreakL="false"
+                                                    linebreakM="false"
+                                                    linebreakS="false"
+                                                />
+                                            </layoutData>
+                                        </VBox>
+                                        <VBox>
+                                            <f:SimpleForm
+                                                id="SimpleFormChange354wide"
+                                                editable="false"
+                                                layout="ResponsiveGridLayout"
+                                                labelSpanXL="4"
+                                                labelSpanL="3"
+                                                width="800px"
+                                                labelSpanM="4"
+                                                labelSpanS="12"
+                                                adjustLabelSpan="false"
+                                                emptySpanXL="0"
+                                                emptySpanL="4"
+                                                emptySpanM="0"
+                                                emptySpanS="0"
+                                                columnsXL="2"
+                                                columnsL="2"
+                                                columnsM="2"
+                                                singleContainerFullSize="false"
+                                            >
+                                                <f:content>
+                                                    <Label text="Plant Name" />
+                                                    <Text id="idPlant" />
+                                                    <Label
+                                                        text="Document Type"
+                                                    />
+                                                    <Text id="PurDocType" />
+                                                    <Label text="PO Date" />
+                                                    <Text id="PurOrdDt" />
+                                                    <Label text="PO Status" />
+                                                    <Text id="PurOrdSts" />
+                                                </f:content>
+                                            </f:SimpleForm>
+                                        </VBox>
+                                    </l:content>
+                                </l:Grid>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Button
+                            text="Approve"
+                            id="btnApprove"
+                            visible="false"
+                            icon="sap-icon://accept"
+                            press="SelectDialogPressApprove"
+                            type="Accept"
+                        />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
 </mvc:View>
