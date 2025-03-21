@@ -7,7 +7,18 @@
 >
    <App>
 		<pages>
-			<Page title="My Purchase Orders">
+			<Page>
+			<customHeader>
+                    <Toolbar>
+                        <content>
+                            <Title
+                                class="myMaster"
+                                text="My Purchase Orders"
+                            />
+                            <ToolbarSpacer />
+                        </content>
+                    </Toolbar>
+                </customHeader>
 				<subHeader>
 					<Toolbar>
 						<SearchField id="idSearchSo" placeholder="Search by PO Number" search="onSearch"></SearchField>

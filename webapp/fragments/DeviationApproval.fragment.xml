@@ -9,7 +9,7 @@
 				<f:formContainers>
 					<f:FormContainer>
 						<f:formElements>
-							<f:FormElement label="Purchase Order/Change Cover Note No.">
+							<f:FormElement label="Purchase Order/Cover Note No. ">
 								<f:fields>
 									<Input type="Number" id="idDevAppPO" placeholder="Enter Purchase Order No" width="80%"/>
 								</f:fields>

@@ -4,3 +4,20 @@
 .proxyDialog{
     width: 30% !important;
 }
+
+.sapMTitle.sapMTitleStyleAuto.sapMTitleNoWrap.sapUiSelectable.sapMTitleMaxWidth.sapMTitleTB.myCustom.sapMBarChild.sapMTBShrinkItem {
+    text-align: center !important;
+    margin-left: 250px !important;
+    font-size: 22px !important;
+    color:black !important;
+}
+
+.sapMTitle.sapMTitleStyleAuto.sapMTitleNoWrap.sapUiSelectable.sapMTitleMaxWidth.sapMTitleTB.myMaster.sapMBarChild.sapMTBShrinkItem{
+    color:black !important;
+    margin-left:85px !important;
+    font-size:18px !important;
+  }
+  .sapMLabelColonAndRequired::before {
+    content: "" !important;
+    display: none !important;
+  }

@@ -21,6 +21,6 @@ builder:
           name: ZAPPPROXY
           description: Proxy Approval
           package: zpoapproval
-          transport: ECDK9A0A9X
+          transport: ECDK9A0DGX
         exclude:
           - /test/

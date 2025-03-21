@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
-	<Dialog    contentWidth="700px" horizontalScrolling="false">
+	<Dialog   contentWidth="700px" horizontalScrolling="false">
 
 		<VBox class="sapUiSmallMargin" >
 			<f:Form id="FormToolbarApproveHistory"
