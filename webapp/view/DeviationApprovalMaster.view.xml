@@ -5,10 +5,10 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
 >
-   <App>
-		<pages>
-			<Page>
-			<customHeader>
+    <App>
+        <pages>
+            <Page>
+                <customHeader>
                     <Toolbar>
                         <content>
                             <Title
@@ -19,41 +19,94 @@
                         </content>
                     </Toolbar>
                 </customHeader>
-				<subHeader>
-					<Toolbar>
-						<SearchField id="idSearchSo" placeholder="Search by PO Number" search="onSearch"></SearchField>
-						<Button id="btnAdd" icon="sap-icon://add" tooltip="{i18n>refreshButtonTooltip}" press="handleOpenDialog"/>
-						<ToolbarSpacer/>
-					</Toolbar>
-				</subHeader>
-				<content>
-						<Text id="txtPUserID" visible="false"/>
-					<Label id="lblUser_dept" visible="false"/>
-					<Text id="txtTemPO" visible="false"/>
-					<Text id="txtTemPOSelctionChange" visible="false"/>
-					<List items="{path:'/results'}" noDataText="No PO for Approval" id="listPO" mode="SingleSelectMaster" selectionChange="onSelectionChange"
-						updateFinished="attachUpdateFinished">
-						<items>
-							<ObjectListItem title="{PO_NO}" type="Active" press="onListItemPress" number="{PO_Amount}" numberUnit="{PO_Currency}">
-								<firstStatus class="clsProxyStatus">
-									<ObjectStatus text="{PO_Status}" state="Success" class="clsProxyStatus"/>
-								</firstStatus>
-								<secondStatus >
-										<ObjectStatus text="{Rush}" visible="true" 	state="Error"/>
-								</secondStatus>
-								<attributes>
-									<ObjectAttribute text="{Document_Type}" class="clsDocType"/>
-									<ObjectAttribute text="{Plant}" class="PlantAttributes"/>
-									<ObjectAttribute text="{Vendor} " class="clsvendor"/>
-									<ObjectAttribute  text="{PoType}" visible="false"/>
-								</attributes>
-							</ObjectListItem>
-							<!--	<StandardListItem title="{PurchaseOrderNo}" description="{PODate}"  iconDensityAware="true" iconInset="true"
+                <subHeader>
+                    <Toolbar>
+                        <SearchField
+                            id="idSearchSo"
+                            placeholder="Search by PO Number"
+                            search="onSearch"
+                        />
+                        <Button
+                            id="btnAdd"
+                            icon="sap-icon://add"
+                            tooltip="{i18n>refreshButtonTooltip}"
+                            press="handleOpenDialog"
+                        />
+                        <ToolbarSpacer />
+                    </Toolbar>
+                </subHeader>
+                <content>
+                    <Text
+                        id="txtPUserID"
+                        visible="false"
+                    />
+                    <Label
+                        id="lblUser_dept"
+                        visible="false"
+                    />
+                    <Text
+                        id="txtTemPO"
+                        visible="false"
+                    />
+                    <Text
+                        id="txtTemPOSelctionChange"
+                        visible="false"
+                    />
+                    <List
+                        items="{path:'/results'}"
+                        noDataText="No PO for Approval"
+                        id="listPO"
+                        mode="SingleSelectMaster"
+                        selectionChange="onSelectionChange"
+                        updateFinished="attachUpdateFinished"
+                    >
+                        <items>
+                            <ObjectListItem
+                                title="{PO_NO}"
+                                type="Active"
+                                press="onListItemPress"
+                                number="{PO_Amount}"
+                                numberUnit="{PO_Currency}"
+                            >
+                                <firstStatus class="clsProxyStatus">
+                                    <ObjectStatus
+                                        text="{PO_Status}"
+                                        state="Success"
+                                        class="clsProxyStatus"
+                                    />
+                                </firstStatus>
+                                <secondStatus>
+                                    <ObjectStatus
+                                        text="{Rush}"
+                                        visible="true"
+                                        state="Error"
+                                    />
+                                </secondStatus>
+                                <attributes>
+                                    <ObjectAttribute
+                                        text="{Document_Type}"
+                                        class="clsDocType"
+                                    />
+                                    <ObjectAttribute
+                                        text="{Plant}"
+                                        class="PlantAttributes"
+                                    />
+                                    <ObjectAttribute
+                                        text="{Vendor} "
+                                        class="clsvendor"
+                                    />
+                                    <ObjectAttribute
+                                        text="{PoType}"
+                                        visible="false"
+                                    />
+                                </attributes>
+                            </ObjectListItem>
+                            <!--	<StandardListItem title="{PurchaseOrderNo}" description="{PODate}"  iconDensityAware="true" iconInset="true"
 							info="{POInitiator}" icon="{src}" infoState="Success"	type="Active" press="onListItemPress"/>-->
-						</items>
-					</List>
-				</content>
-			</Page>
-		</pages>
-	</App>
+                        </items>
+                    </List>
+                </content>
+            </Page>
+        </pages>
+    </App>
 </mvc:View>

@@ -56,7 +56,7 @@
                                 icon="sap-icon://pdf-attachment"
                                 text="Cover Note"
                                 key="CoverNote"
-								iconColor="Negative"
+                                iconColor="Negative"
                             >
                                 <core:HTML id="idFrame" />
                             </IconTabFilter>
@@ -64,7 +64,7 @@
                                 icon="sap-icon://pdf-attachment"
                                 text="Purch.Order/Change"
                                 key="PurchaseOrder"
-								iconColor="Negative"
+                                iconColor="Negative"
                             >
                                 <core:HTML id="idFramePO" />
                             </IconTabFilter>
@@ -72,7 +72,7 @@
                                 text="Cost Details"
                                 key="Attachments"
                                 icon="sap-icon://attachment"
-								iconColor="Negative"
+                                iconColor="Negative"
                             >
                                 <UploadCollection
                                     id="UploadCollection"
@@ -157,7 +157,7 @@
                                 text="Query History"
                                 key="QueryHistory"
                                 icon="sap-icon://history"
-								iconColor="Negative"
+                                iconColor="Negative"
                             >
                                 <Table
                                     id="tblQueryHistory"
@@ -230,7 +230,7 @@
                                 text="Appr.Comments"
                                 key="Comments"
                                 icon="sap-icon://comment"
-								iconColor="Negative"
+                                iconColor="Negative"
                             >
                                 <Table
                                     id="tblComments"
@@ -292,7 +292,7 @@
                                 text="General"
                                 key="General"
                                 icon="sap-icon://message-information"
-								iconColor="Negative"
+                                iconColor="Negative"
                             >
                                 <l:Grid
                                     class="sapUiSmallMarginTop"
@@ -341,7 +341,9 @@
                                                         text="PO/AMND Initiator "
                                                     />
                                                     <Text id="PurOrdInt" />
-                                                    <Label text="Vendor Name " />
+                                                    <Label
+                                                        text="Vendor Name "
+                                                    />
                                                     <Text id="PurOrdVendor" />
                                                     <Label text="CN Date " />
                                                     <Text id="idCnDate" />
